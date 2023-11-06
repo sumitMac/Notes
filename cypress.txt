@@ -1,0 +1,85 @@
+#POINTS TO REMEMBER
+*There are two API available for adding custom commands:
+
+Cypress.Commands.add() - use to add a custom command to use when writing tests.
+
+Cypress.Command.overwrite() - use to override an existing built-in Cypress command or reserved internal function. Caution: this overrides it for Cypress as well and could impact how Cypress behaves.
+
+*What makes a user journey test so valuable is the fact that you are testing every aspect of your system and application within a single test.
+
+*Custom Cypress Commands
+What a custom command allows us to do is to reuse code or functionality across all of our Cypress spec files.
+
+* Notice that within each test, we have to specifically tell Cypress where to navigate to in our application.
+
+* Command chaining
+its like pipe line.
+
+*You can also pass regular expressions into the contains method. So if you wanted to make a case insensitive comparison using regex, you could use:
+
+cy.get("dt").eq(0).contains(/4 courses/i)
+
+# COMMANDS AND METHOD USES.
+
+* best practice 
+Use data-* attributes to provide context to your selectors and isolate them from CSS or JS changes.
+
+<button
+  id="main"
+  class="btn btn-large"
+  name="submission"
+  role="button"
+  data-cy="submit"
+>
+  Submit
+</button>
+
+best practice cy.get('[data-cy="submit"]').click()	 Always	Best. Isolated from all changes.
+
+* We can tell Cypress to only run a specific test by using it.only().By adding .only() after the it we are telling Cypress to only run this specific test.
+
+You can add .only() to multiple tests, and only those tests will run.
+
+* eq() This command will allow us to access a specific index within an array of elements, which is exactly what we want.
+
+*contains() is case-sensitive.
+
+#HOOKS
+
+* beforeEach
+This is a function that will get called “before each” test is run.
+
+*Context Blocks: Context blocks allow you to group tests based on a specific context or scenario. They provide a way to set up a common test environment or share setup steps among related tests. For example, imagine you are testing a user authentication feature. You can use a context block to define the setup steps required for different authentication scenarios:
+
+*Describe Blocks: Describe blocks are used to group related tests within a broader context. They provide a higher level of organization, allowing you to categorize tests based on specific functionality or feature. For instance, if you are testing a shopping cart functionality, you can use describe blocks to group tests related to adding items, removing items, and checking out:
+
+*Context and Describe Blocks: You can also nest context and describe blocks to create a hierarchical structure that reflects the relationships between different test scenarios. This allows for a more granular organization of your test suite. 
+
+*
+cy.location()
+cy.location(key)
+cy.location(options)
+cy.location(key, options)
+Get the global window.location object of the page that is currently active.
+
+When not given a key argument:
+cy.location() yields the location object with the following properties:
+
+hash
+host
+hostname
+href
+origin
+pathname
+port
+protocol
+search
+toString
+
+Requirements 
+cy.location() requires being chained off of cy.
+Assertions 
+cy.location() will automatically retry until all chained assertions have passed
+Timeouts 
+cy.location() can time out waiting for assertions you've added to pass.
+
