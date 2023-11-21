@@ -13,14 +13,6 @@ For iOS - UIView
 For Android - android.view
 For Web - <div>
 
-TouchableOpacity 👇
-If you're looking to create a button or another interactive element that fades
-in opacity when pressed, you can use
-TouchableOpacity Component.
-Think of it like a cousin to the Button component in React but have more room for 👇
-Customization Flexibility
-
-
 FlatList 👇
 Which is used for rendering a long list of items that need to be scrolled efficiently
 It's like the map function in React
@@ -31,7 +23,7 @@ use for small list.
 ScrollView 👇
 its like overflow scroll in html
 
-<SafeAreaView>
+SafeAreaView 👇
 The purpose of SafeAreaView is to render content within the safe area boundaries of a device. It is currently only applicable to iOS devices with iOS version 11 or later.
 
 Text 👇
@@ -40,13 +32,13 @@ is used to render text. Unlike on the web, text must be wrapped in a <Text> comp
 Image 👇
 is used to render images. Images may either be downloaded from the web, or imported as files, which are then bundled with the app.
 
-# point
+# POINTS 👉
 Layout works differently for images downloaded from the web and those imported as files.
 
 Imported images: the image file is scanned at build-time, and the image's dimensions are included as metadata in the app bundle. The dimensions of an Image component are then set to image's dimensions by default.
 Images from the web: the dimensions of the image aren't known at build-time, so the width and height of the Image are set to 0 by default. In order for the image to show up on the screen, we need to either set the width and height or a flex value in the style of the Image. If the dimensions are known ahead-of-time, then they may be passed in the source prop along with the uri.
 
-Syntax👇
+Syntax 👉
    <Image
       style={styles.image}
       source={{ uri: '' }}
@@ -57,8 +49,48 @@ Syntax👇
 
 Button is convenient, but not very configurable, so if we want to customize the style beyond the color, we'll typically use Touchable components instead.
 
-Syntax👇
+Syntax 👉
  <Button
         title={'Your btn name'}
         onPress={your code}
       />
+# POINTS 👉
+In React Native, most "buttons" are actually implemented using Touchable components.
+Like Button, these components support an onPress prop. However, unlike Button, these components support custom styling - essentially a Touchable is a View that can be pressed.
+
+Touchable have a variety of other props, like onPressIn and onPressOut, which give us more control over the behavior of the button. We can use these props to run custom animations.
+
+Touchable 👇
+we use one of 2 built-in animations: a fade in opacity, or a change of color. There are preconfigured touchable components for each of these: TouchableOpacity and TouchableHighlight.
+If we do want to write a custom animation, we'll typically use TouchableWithoutFeedback, since it doesn't have any built-in animation. If we want to support the native Android "ripple" effect, we'll use TouchableNativeFeedback.
+
+Touchable Opacity 👇
+This component fades out when pressed, and fades back in when released. We can style it however we want, just like a View.
+
+# POINTS 👉
+We can configure the pressed opacity with the activeOpacity prop.
+
+Syntax 👉
+<TouchableOpacity
+        style={your styling code}
+        activeOpacity={your value}
+        onPress={ your code}
+      >
+
+Touchable Highlight 👇
+This component changes color when pressed, and changes back in when released.
+
+# POINTS 👉
+We can configure the color with the underlayColor prop.
+
+Syntax 👉
+<TouchableHighlight
+        style={your styling code}
+        underlayColor="color code in string"
+        onPress={ your code}
+      >
+
+
+
+
+
