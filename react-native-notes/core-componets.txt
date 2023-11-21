@@ -1,7 +1,7 @@
-# Core Components =>
+# Core Components👇
 React Native includes a few dozen components which can be used out-of-the-box. More complex components can be built by combining the core components in interesting ways.
 
-<View>
+View 👇
 It is often used to create layout structures for other components.
 It has number of props that can be used to control its appearance & behavior.
 <View> uses flex-box layout by default.
@@ -13,22 +13,52 @@ For iOS - UIView
 For Android - android.view
 For Web - <div>
 
-<TouchableOpacity>
+TouchableOpacity 👇
 If you're looking to create a button or another interactive element that fades
 in opacity when pressed, you can use
 TouchableOpacity Component.
-Think of it like a cousin to the Button component in React but have more room for =>
+Think of it like a cousin to the Button component in React but have more room for 👇
 Customization Flexibility
 
 
-Flatlist
+FlatList 👇
 Which is used for rendering a long list of items that need to be scrolled efficiently
 It's like the map function in React
 
-Map use for small list.
+Map 👇
+use for small list.
 
-<ScrollView>
+ScrollView 👇
 its like overflow scroll in html
 
 <SafeAreaView>
 The purpose of SafeAreaView is to render content within the safe area boundaries of a device. It is currently only applicable to iOS devices with iOS version 11 or later.
+
+Text 👇
+is used to render text. Unlike on the web, text must be wrapped in a <Text> component.
+
+Image 👇
+is used to render images. Images may either be downloaded from the web, or imported as files, which are then bundled with the app.
+
+# point
+Layout works differently for images downloaded from the web and those imported as files.
+
+Imported images: the image file is scanned at build-time, and the image's dimensions are included as metadata in the app bundle. The dimensions of an Image component are then set to image's dimensions by default.
+Images from the web: the dimensions of the image aren't known at build-time, so the width and height of the Image are set to 0 by default. In order for the image to show up on the screen, we need to either set the width and height or a flex value in the style of the Image. If the dimensions are known ahead-of-time, then they may be passed in the source prop along with the uri.
+
+Syntax👇
+   <Image
+      style={styles.image}
+      source={{ uri: '' }}
+    />
+
+ Button 👇   
+ We use the Button component when we want to show a button using the default/standard style for each native platform.
+
+Button is convenient, but not very configurable, so if we want to customize the style beyond the color, we'll typically use Touchable components instead.
+
+Syntax👇
+ <Button
+        title={'Your btn name'}
+        onPress={your code}
+      />
