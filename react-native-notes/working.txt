@@ -18,19 +18,10 @@ Our JavaScript code runs in a JavaScript "engine", or interpreter, on mobile dev
 thats where Babel comes in=>
 Babel is a highly configurable compiler that lets us use newer JavaScript language features (and extensions, like JSX), compiling "down" into older versions of JavaScript that are supported on a wider range of engines.This essentially smooths out any differences between JSC versions, or between JSC and Hermes, so we don't have to think about those differences when writing our app.
 
-# Core Components =>
-React Native includes a few dozen components which can be used out-of-the-box. More complex components can be built by combining the core components in interesting ways.
+JavaScript is dynamically typed, which means that type checking happens at runtime. This is convenient for small scripts, but for large apps it's often helpful to have type checking at compile-time. For this reason, many React Native developers write their apps in TypeScript, a language that compiles "down" into JavaScript (somewhat like how Babel works). React Native officially supports TypeScript via a separate starter template, and Expo includes a TypeScript template too.
 
-<View>
-It is often used to create layout structures for other components.
-It has number of props that can be used to control its appearance & behavior.
-<View> uses flex-box layout by default.
-Which makes it really easy to control how its child components are laid out within the container.
+TypeScript extends JavaScript, adding syntax for type declarations and annotations. The TypeScript compiler can then perform compile-time type checking, before transforming the TypeScript code into JavaScript.
 
-Views are the most basic building block of React Native apps. The View is an abstraction layer on top of the target platform's native equivalent:
-
-For iOS - UIView
-For Android - android.view
-For Web - <div>
+Check( https://www.javascript.express/) for JavaScript and TypeScript.
 
 

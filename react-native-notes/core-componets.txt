@@ -1,0 +1,34 @@
+# Core Components =>
+React Native includes a few dozen components which can be used out-of-the-box. More complex components can be built by combining the core components in interesting ways.
+
+<View>
+It is often used to create layout structures for other components.
+It has number of props that can be used to control its appearance & behavior.
+<View> uses flex-box layout by default.
+Which makes it really easy to control how its child components are laid out within the container.
+
+Views are the most basic building block of React Native apps. The View is an abstraction layer on top of the target platform's native equivalent:
+
+For iOS - UIView
+For Android - android.view
+For Web - <div>
+
+<TouchableOpacity>
+If you're looking to create a button or another interactive element that fades
+in opacity when pressed, you can use
+TouchableOpacity Component.
+Think of it like a cousin to the Button component in React but have more room for =>
+Customization Flexibility
+
+
+Flatlist
+Which is used for rendering a long list of items that need to be scrolled efficiently
+It's like the map function in React
+
+Map use for small list.
+
+<ScrollView>
+its like overflow scroll in html
+
+<SafeAreaView>
+The purpose of SafeAreaView is to render content within the safe area boundaries of a device. It is currently only applicable to iOS devices with iOS version 11 or later.
