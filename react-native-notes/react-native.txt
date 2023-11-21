@@ -1,0 +1,36 @@
+# React Native => 
+React Native is a JavaScript framework for building cross-platform apps.
+
+# Environment setup =>(https://reactnative.dev/docs/environment-setup)
+There are two common ways to set up a React Native development environment: expo-cli and react-native CLI.
+
+In terms of the JavaScript code, the main difference from expo-cli is that react-native apps require registering the root component of your app using AppRegistry.registerComponent.
+
+import { AppRegistry } from 'react-native'
+import App from './App'
+import { name as appName } from './app.json'
+
+AppRegistry.registerComponent(appName, () => App)
+
+# Working under the hood =>
+Our JavaScript code runs in a JavaScript "engine", or interpreter, on mobile devices. On iOS, our code runs in JSC, the same open source engine used by the Safari web browser. On Android, our code can either use JSC, or a new engine from Facebook called Hermes.
+
+thats where Babel comes in=>
+Babel is a highly configurable compiler that lets us use newer JavaScript language features (and extensions, like JSX), compiling "down" into older versions of JavaScript that are supported on a wider range of engines.This essentially smooths out any differences between JSC versions, or between JSC and Hermes, so we don't have to think about those differences when writing our app.
+
+# Core Components =>
+React Native includes a few dozen components which can be used out-of-the-box. More complex components can be built by combining the core components in interesting ways.
+
+<View>
+It is often used to create layout structures for other components.
+It has number of props that can be used to control its appearance & behavior.
+<View> uses flex-box layout by default.
+Which makes it really easy to control how its child components are laid out within the container.
+
+Views are the most basic building block of React Native apps. The View is an abstraction layer on top of the target platform's native equivalent:
+
+For iOS - UIView
+For Android - android.view
+For Web - <div>
+
+
