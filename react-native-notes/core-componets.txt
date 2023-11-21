@@ -13,15 +13,8 @@ For iOS - UIView
 For Android - android.view
 For Web - <div>
 
-FlatList 👇
-Which is used for rendering a long list of items that need to be scrolled efficiently
-It's like the map function in React
-
 Map 👇
 use for small list.
-
-ScrollView 👇
-its like overflow scroll in html
 
 SafeAreaView 👇
 The purpose of SafeAreaView is to render content within the safe area boundaries of a device. It is currently only applicable to iOS devices with iOS version 11 or later.
@@ -90,7 +83,123 @@ Syntax 👉
         onPress={ your code}
       >
 
+ScrollView 👇
+its like overflow scroll in html.used for scrollable content. They're well suited for scrolling small quantities of content (less than a full screen). They can scroll horizontally or vertically. For large quantities of items, consider using a FlatList for better performance.
 
+FlatList 👇
+Which is used for rendering a long list of items that need to be scrolled efficiently
+It's like the map function in React.
+They expose the underlying ScrollView, but add performance improvements: only rendering the content on screen (clipping offscreen content), and only updating rows that have changed. Like ScrollViews, they can scroll horizontally or vertically.
 
+POINTS 👉
+Lists are like ScrollViews, but optimized to recycle elements and reduce re-renders for better performance. As a result, the APIs are a little more complex than ScrollView.
 
+FlatList and SectionList are the recommended list components for performant lists. They're built on top of VirtualizedList, which is a highly flexible and optimized list implementation, that generally shouldn't be used directly. These replace the (now deprecated) ListView component.
+
+Instead of rendering their children prop, FlatLists render each item in their input data using the renderItem prop. The renderItem prop is a function which takes an item from the data array and maps it to a React Element. Each item in data should be an object with a unique id, so that React can determine when items are rearranged. The unique id is looked up as item.key by default, but you can specify another way to find/build the id by passing a keyExtractor function prop.
+
+# Example and Syntax 👉
+const items = [
+  { id: '0', text: 'View' },
+  { id: '1', text: 'Text' },
+  { id: '2', text: 'Image' },
+  { id: '3', text: 'ScrollView' },
+  { id: '4', text: 'ListView' },
+]
+
+export default function App() {
+  return (
+    <FlatList
+      style={your styling code}
+      data={items}
+      renderItem={({ item }) => <Text style={your style code}>{item.text}</Text>}
+      keyExtractor={(item) => item.id}
+    />
+  )
+}
+
+SectionList 👇
+SectionLists are like FlatLists, but they can have section headers to separate groups of rows.
+
+# POINTS 👉
+SectionLists render each item in their input sections using the renderSectionHeader and renderItem prop. Each item in sections should be an object with a unique id (the key), and an array data of row data. Each item in data should also be an object with a unique id. The renderSectionHeader prop is a function which takes an item from the sections array and maps it to a React Element. The renderItem prop, just like for FlatList, is a function which takes an item from the data array (for a section) and returns a React Element.
+
+# Example and Syntax 👉
+
+If each row is rendered with the same renderItem function, we call this homogenous rendering.
+(Homogenous row example)
+
+const sections = [
+  {
+    id: '0',
+    title: 'Basic Components',
+    data: [
+      { id: '0', text: 'View' },
+      { id: '1', text: 'Text' },
+      { id: '2', text: 'Image' },
+    ],
+  },
+  {
+    id: '1',
+    title: 'List Components',
+    data: [
+      { id: '3', text: 'ScrollView' },
+      { id: '4', text: 'ListView' },
+    ],
+  },
+]
+
+export default function App() {
+  return (
+    <SectionList
+      style={styles.container}
+      sections={sections}
+      renderItem={({ item }) => <Text style={styles.row}>{item.text}</Text>}
+      renderSectionHeader={({ section }) => (
+        <Text style={styles.header}>{section.title}</Text>
+      )}
+      keyExtractor={(item) => item.id}
+    />
+  )
+}
+
+A renderItem function may be specified as part of the sections data, one per section, rather than as a prop of the SectionList. This lets us render each section differently. Alternately, you could use the item data to determine how to render items differently.
+(Heterogenous row example)
+
+onst sections = [
+  {
+    id: '0',
+    title: 'Basic Components',
+    data: [
+      { id: '0', text: 'View' },
+      { id: '1', text: 'Text' },
+      { id: '2', text: 'Image' },
+    ],
+    renderItem: ({ item }) => {
+      return <Text style={styles.row}>{item.text}</Text>
+    },
+  },
+  {
+    id: '1',
+    title: 'List Components',
+    data: [
+      { id: '3', text: 'ScrollView' },
+      { id: '4', text: 'ListView' },
+    ],
+    renderItem: ({ item }) => <Text style={styles.rowDark}>{item.text}</Text>,
+  },
+]
+
+export default function App() {
+  return (
+    <SectionList
+      style={styles.container}
+      sections={sections}
+      renderSectionHeader={({ section }) => {
+        return <Text style={styles.header}>{section.title}</Text>
+      }}
+      keyExtractor={(item) => item.id}
+    />
+  )
+}
 
