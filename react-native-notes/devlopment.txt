@@ -1,0 +1,55 @@
+In App development have following points to keep in mind 👇
+* project structure
+* navigation
+* data management
+* persistence
+* networking
+* animation
+* gestures
+* component libraries
+* native modules.
+
+navigation 👇
+
+Navigation challenges 👉
+There are a few aspects of navigation which make it challenging in React Native:
+
+Navigation works differently on each native platform. iOS uses view controllers, while android uses activities. These platform-specific APIs work differently technically and appear differently to the user. React Native navigation libraries try to support the look-and-feel of each platform, while still providing a single consistent JavaScript API.
+Native navigation APIs don't correspond with "views". React Native components like View, Text, and Image, roughly map to an underlying native "view", but there isn't really an equivalent for some of the navigation APIs. There isn't always a clear way to expose these APIs to JavaScript.
+Navigation on mobile is stateful. On the web, navigation is typically stateless, where a url (i.e. route) takes a user to a single screen/page. On mobile, the history of the user's navigation state is persisted in the application so that the user can go back to previous screens - a stack of screens can even include the same screen multiple times.
+
+* Due to these challenges, there isn't a single best way to implement navigation, so it was removed from the core React Native package.
+*react-navigation is the most popular navigation library. It handles most of the challenges described above nicely, and is sufficiently configurable for most apps.
+
+# steps to create navigation in app 👇
+* Create a navigator 👉 choose one of the available navigators
+
+example
+import { createStackNavigator } from '@react-navigation/stack';
+const Root = createStackNavigator()
+
+* Create screen components 👉 create a component for each screen.(Screens are regular React components. They'll be passed navigation-specific props when instantiated)
+
+example
+const Screen1 = ({ navigation, route }) => {
+  return <Text>Screen1</Text>
+}
+
+* Render it 👉 render a NavigationContainer with our navigator within it
+
+example
+import { NavigationContainer } from '@react-navigation/native'
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Root.Navigator>
+        <Root.Screen name="Screen1" component={Screen1} />
+        <Root.Screen name="Screen2" component={Screen2} />
+        <Root.Screen name="Screen3" component={Screen3} />
+      </Root.Navigator>
+    </NavigationContainer>
+  )
+} 
+
+
+
