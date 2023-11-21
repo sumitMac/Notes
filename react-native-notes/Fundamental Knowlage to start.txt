@@ -1,7 +1,7 @@
 # React Native 👇 
 React Native is a JavaScript framework for building cross-platform apps.
 
-# Environment setup 👇 (https://reactnative.dev/docs/environment-setup)
+# Environment setup 👇
 There are two common ways to set up a React Native development environment: expo-cli and react-native CLI.
 
 In terms of the JavaScript code, the main difference from expo-cli is that react-native apps require registering the root component of your app using AppRegistry.registerComponent.
@@ -22,6 +22,5 @@ JavaScript is dynamically typed, which means that type checking happens at runti
 
 TypeScript extends JavaScript, adding syntax for type declarations and annotations. The TypeScript compiler can then perform compile-time type checking, before transforming the TypeScript code into JavaScript.
 
-Check 👉 ( https://www.javascript.express/) for JavaScript and TypeScript.
 
 

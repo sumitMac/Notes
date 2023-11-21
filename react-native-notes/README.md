@@ -1,7 +1,15 @@
-# Official Docs by facebook.
+# imp link for details view of notes
 
-https://reactnative.dev/
+React (official docs) 👉 https://react.dev/.
 
-# Expo docs
+React Native (official docs) 👉 https://reactnative.dev/
 
-https://docs.expo.dev/
+Expo (official docs) 👉 https://docs.expo.dev/
+
+# quick revise links
+
+React Express Docs 👉 https://www.reactnative.express/
+
+JavaScript and TypeScript 👉 https://www.javascript.express/
+
+React Native Environment setup https://reactnative.dev/docs/environment-setup
